@@ -1,288 +1,255 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>  CRUD OPERATIONS</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title> CRUD OPERATIONS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style type="text/css">
-tr:nth-of-type(odd) {
-      background-color:#e5d7d7;
+    tr:nth-of-type(odd) {
+        background-color: #e5d7d7;
     }
-/*tr, td {
-  background-color: #9999CC;
-  color: black;
-}*/
-  body { background: white; }
-.btn{color:white;
-background:black;
-size: 3px;
-}
-.btn:hover
-{
 
-background-color:#5b8480;
-}
+    body {
+        background: white;
+    }
 
+    .btn {
+        color: white;
+        background: black;
+        size: 3px;
+    }
+
+    .btn:hover {
+
+        background-color: #5b8480;
+    }
 </style>
 
 <body>
-       <div class="col-md-4">
-<div class="form-group">
-              <div class="" style="width:1220px;  ">
-   <div class="panel panel-default" >
-    <div class="panel-body"  style="background-color:#bccce5  ">
-<form>
-                <div class="col-md-5">
+    <div class="col-md-4">
+        <div class="form-group">
+            <div class="" style="width:1220px;  ">
+                <div class="panel panel-default">
+                    <div class="panel-body" style="background-color:#bccce5  ">
+                        <form>
+                            <div class="col-md-5">
 
-<div class="form-group">
- <div class="row">
-  <div class="col-md-2">
-              <label>Name</label>
-            </div>
-            <div class="col-md-10">
-              <input type="text" id="name" name="name" class="form-control " placeholder="User Name">
-            </div>
-  </div> 
-          </div>
-       <div class="row">
-        <div class="col-md-2">
-            <label>Mobile </label>
-            </div>
-         <div class="col-md-10">
-  
-         <input id="mobile" type="number" class="form-control" placeholder="Enter Valid Phone"  name="Mobile" ><br> 
-         </div>
-        </div>
-<div class="row">
-        <div class="col-md-2">
-            <label>ID</label>
-            </div>
-         <div class="col-md-10">
-  
-         <input id="id" type="text" class="form-control" placeholder="Enter Valid id" name="id"> <br>
-         </div>
-        </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Name</label>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" id="name" name="name" class="form-control " placeholder="User Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label>Mobile </label>
+                                    </div>
+                                    <div class="col-md-10">
 
-      <input type="button" id="add" class="btn" value="add" name="add" style="margin-left: 80px">
-      <input type="button" id="delete" class="btn" value="delete" name="delete">
-      <input type="button" id="update" class="btn" value="update" name="update">
-   <!--  </div> -->
-      <input type="button" id="viewUser" class="btn" value="viewUser" name="viewUser">
-</div></form>
+                                        <input id="mobile" type="number" class="form-control" placeholder="Enter Valid Phone" name="Mobile"><br>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label>ID</label>
+                                    </div>
+                                    <div class="col-md-10">
 
- <div class="col-md-1" ></div>
-                <div class="col-md-6">
-                    <div class="userListWrap">
-                        <h3 style="text-align: center; margin-top:-10px;  ">User List</h3>
-                        <div style="overflow: scroll;
-    height: 500px;">
-    
-                        <table class="table" id="tableId">
-                            <thead>
-                                <tr>
-                                    <th class="text-center" style=" background-color:#5b8480">ID</th>
-                                    <th class="text-center" style=" background-color:#5b8480">Name</th>
-                                    <th class="text-center" style=" background-color:#5b8480">Mobile</th>
-                                    <th class="text-center" style=" background-color:#5b8480">Delete</th>
+                                        <input id="id" type="text" class="form-control" placeholder="Enter Valid id" name="id"> <br>
+                                    </div>
+                                </div>
+
+                                <input type="button" id="add" class="btn" value="add" name="add" style="margin-left: 80px">
+                                <input type="button" id="delete" class="btn" value="delete" name="delete">
+                                <input type="button" id="update" class="btn" value="update" name="update">
+                                <input type="button" id="viewUser" class="btn" value="viewUser" name="viewUser">
+                            </div>
+                        </form>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-6">
+                            <div class="userListWrap">
+                                <h3 style="text-align: center; margin-top:-10px;  ">User List</h3>
+                                <div style="overflow: scroll;height: 500px;">
+
+                                    <table class="table" id="tableId">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center" style=" background-color:#5b8480">ID</th>
+                                                <th class="text-center" style=" background-color:#5b8480">Name</th>
+                                                <th class="text-center" style=" background-color:#5b8480">Mobile</th>
+                                                <th class="text-center" style=" background-color:#5b8480">Delete</th>
+
+                                            </tr>
+
+                                        </thead>
+                                        <tbody class="userList">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+                            <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+                            <script>
+                                $(document).ready(function() {
+                                    $('#add').click(function(e) {
+                                        e.preventDefault();
+                                        var name = $('#name').val();
+                                        var mobile = $('#mobile').val();
+                                        if ((mobile.length != 10) && (typeof(mobile) != "number")) {
+                                            alert("Mobile Number is incorrect");
+                                            return false;
+                                        }
+                                        if (name.length == 0) {
+                                            alert("Name Field is required");
+                                            return false;
+                                        }
+                                        var request = $.ajax({
+                                            "url": "http://localhost:3000/add",
+                                            "type": "POST",
+                                            "data": {
+                                                "name": name,
+                                                "mobile": mobile
+                                            }
+                                        });
+                                        request.success(function(data) {
+                                            if (data.status == 1) {
+                                                var userData = data.response;
+                                                localStorage.setItem('user', JSON.stringify(userData));
+                                                window.location.replace('index.html');
+                                            }
+                                        });
+                                        
+                                        $('#viewUser').trigger('click');
+                                    });
+
+                                });
+
+                                $(document).ready(function() {
+                                    $('#update').click(function(e) {
+                                        e.preventDefault();
+                                        var name = $('#name').val();
+                                        var mobile = $('#mobile').val();
+                                        var id = $('#id').val();
+                                        if ((id.length == 0)) {
+                                            alert("ID is required");
+                                        }
+
+                                        if (name.length == 0) {
+                                            alert("Name is required");
+                                            return false;
+                                        }
+
+                                        if ((mobile.length != 10) && (typeof(mobile) != "Number")) {
+                                            alert("Mobile Number is incorrect");
+                                            return false;
+                                        }
+                                        var request = $.ajax({
+                                            "url": "http://localhost:3000/update",
+                                            "type": "POST",
+                                            "data": {
+                                                "name": name,
+                                                "mobile": mobile,
+                                                "id": id
+                                            }
+                                        });
+                                        request.success(function(data) {
+                                            if (data.status == 1) {
+                                                var userData = data.response;
+                                                localStorage.setItem('user', JSON.stringify(userData));
+                                                window.location.replace('index.html');
+                                            } 
+                                        });
+                                        
+                                        $('#viewUser').trigger('click');
+                                    });
+
+                                });
+
+
+                                $(document).ready(function() {
+                                    $('#delete').click(function(e) {
+                                        e.preventDefault();
+                                        var name = $('#name').val();
+                                        var mobile = $('#mobile').val();
+                                        var id = $('#id').val();
+                                        if ((id.length == 0)) {
+                                            alert("ID is required");
+                                        }
+                                        var request = $.ajax({
+                                            "url": "http://localhost:3000/delete",
+                                            "type": "POST",
+                                            "data": {
+                                                "id": id,
+                                                "name": name,
+                                                "mobile": mobile
+                                            }
+                                        });
+                                        request.success(function(data) {
+                                            if (data.status == 1) {
+                                                var userData = data.response;
+                                                localStorage.setItem('user', JSON.stringify(userData));
+                                            } 
+                                        });
+                                        $('#viewUser').trigger('click');
+                                    });
                                     
-                                </tr>
-
-                            </thead>
-                            <tbody class="userList">
-                            </tbody>
-                        </table>
-                </div>
-            </div>
-
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<script type="text/javascript" src = "assets/js/jquery.min.js"></script>
-<script >
-  $(document).ready(function(){
-      $('#add').click(function(e) {
-         e.preventDefault();
-         var name = $('#name').val();
-         var mobile = $('#mobile').val();
-         if ( (mobile.length != 10 ) &&(typeof(mobile)!= "number") ) {
-           alert("Mobile Number is incorrect");
-           return false;
-         }
-        if ( name.length == 0 ) {
-          alert("Name Field is required");
-          return false;
-       }
-          var request = $.ajax({
-          "url": "http://localhost:3000/add",
-          "type": "POST",
-          "data": {
-            "name" : name,
-            "mobile": mobile
-          }
-        });
-          request.success(function(data){
-          console.log(data);
-          if ( data.status == 1 ) {
-            var userData = data.response;
-            console.log(userData);
-            localStorage.setItem('user', JSON.stringify(userData));
-             window.location.replace('index.html');
-          } 
-        });
-        request.fail(function(error){
-          console.log("error");
-        })
-         });
-      });
-
-$(document).ready(function(){
-      $('#update').click(function(e) {
-         e.preventDefault();
-         var name = $('#name').val();
-         var mobile = $('#mobile').val();
-        var id = $('#id').val();
-         if ( (id.length == 0) ) {
-          alert("ID is required");
-        } 
-  
-         if (name.length == 0) {
-          alert("Name is required");
-          return false;
-        }
-
-if ( (mobile.length != 10 ) && (typeof(mobile) != "Number") ) {
-           alert("Mobile Number is incorrect");
-           return false;
-         }
-       var request = $.ajax({
-          "url": "http://localhost:3000/update",
-          "type": "POST",
-          "data": {
-            "name" : name,
-            "mobile": mobile,
-            "id":id
-          }
-        });
-          request.success(function(data){
-          console.log(data);
-          if ( data.status == 1 ) {
-            var userData = data.response;
-            console.log(userData);
-            localStorage.setItem('user', JSON.stringify(userData));
-             window.location.replace('index.html');
-          } else {
-            //alert("Invalid Credential");
-          }
-        });
-        request.fail(function(error){
-          console.log("error");
-        })
-        $('#viewUser').trigger('click');
-         });
-
-      });
-
-
-$(document).ready(function(){
-      $('#delete').click(function(e) {
-         e.preventDefault();
-         var name = $('#name').val();
-         var mobile = $('#mobile').val();
-        var id = $('#id').val();
-         if ( (id.length == 0) ) {
-          alert("ID is required");
-        }
-        var request = $.ajax({
-          "url": "http://localhost:3000/delete",
-          "type": "POST",
-           "data": {
-          "id":id,
-          "name" : name,
-            "mobile": mobile
-           }
-        });
-          request.success(function(data){
-          console.log(data);
-          if ( data.status == 1 ) {
-            var userData = data.response;
-            console.log(userData);
-            localStorage.setItem('user', JSON.stringify(userData));
-             //window.location.reload('index.html');
-          } else {
-            //alert("Invalid Credential");
-          }
-        });
-        request.fail(function(error){
-          console.log("error");
-        })
-         });
-      });
+                                });
 
 
 
 
-     $('#viewUser').click(function(e) {
-          e.preventDefault();
-          var request = $.ajax({
-              "url": "http://localhost:3000/viewUser",
-              "type": "post",
-              "data": {
+                                $('#viewUser').click(function(e) {
+                                    e.preventDefault();
+                                    var request = $.ajax({
+                                        "url": "http://localhost:3000/viewUser",
+                                        "type": "post",
+                                        "data": {
 
-              }
-          });
-          console.log(request);
-          request.success(function(data) {
-            console.log(data);
-            $('.userList').empty();
-                for (var i = 0; i < data.length; i++) {
-                    var userData = data.response;
-                   // console.log(data.length);
-                    localStorage.setItem('user', JSON.stringify(userData));
-                   
-                    $('.userList').append('<tr>\
-                        <td class="text-center">' + data[i]["id"] + '</td>\
-                        <td class="text-center">' + data[i]["name"] + '</td>\
-                        <td class="text-center">' + data[i]["mobile"] + '</td>\
-                        <td class="text-center" ><button class="btn" id="delete'+i+'" onclick="deleteUser('+data[i]["id"]+')">Delete</button></td>\
-                    </tr>') 
-}
-      
-        
-           }) 
-      });
+                                        }
+                                    });
+                                    request.success(function(data) {
+                                        $('.userList').empty();
+                                        for (var i = 0; i < data.length; i++) {
+                                            var userData = data.response;
+                                            localStorage.setItem('user', JSON.stringify(userData));
+                                            $('.userList').append('<tr>\
+                    <td class="text-center">' + data[i]["id"] + '</td>\
+                    <td class="text-center">' + data[i]["name"] + '</td>\
+                    <td class="text-center">' + data[i]["mobile"] + '</td>\
+                    <td class="text-center" ><button class="btn" id="delete' + i + '" onclick="deleteUser(' + data[i]["id"] + ')">Delete</button></td>\
+                </tr>')
+                                        }
 
-     function deleteUser(id){
-                    alert(id);
-                    var request = $.ajax({
-                          "url": "http://localhost:3000/delete",
-                          "type": "POST",
-                           "data": {
-                               "id":id
-                           }
-                    });
-                    //window.location.reload('index.html');
-                     $('#viewUser').trigger('click');
-                }
 
-     // function editUser(id){
-     //                alert(id);
-     //                var request = $.ajax({
-     //                      "url": "http://localhost:3000/up",
-     //                      "type": "POST",
-     //                      "data":{
-     //        "name" : name,
-     //        "mobile": mobile,
-     //        "id":id
-     //    };
-          
-     //            });           
-     //            }
+                                    })
+                                });
 
-       $(window).scroll();
-    
-    $(window).resize();
-</script>
+                                function deleteUser(id) {
+                                    alert("id "+id+" will be deleted permanently");
+                                    var request = $.ajax({
+                                        "url": "http://localhost:3000/delete",
+                                        "type": "POST",
+                                        "data": {
+                                            "id": id
+                                        }
+                                    });
+                                    $('#viewUser').trigger('click');
+                                }
+                                $(window).scroll();
+
+                                $(window).resize();
+                            </script>
 </body>
+
 </html>
