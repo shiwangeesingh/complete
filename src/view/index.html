@@ -2,33 +2,13 @@
 <html>
 
 <head>
+	<link href="style.css" rel="stylesheet">
     <title> CRUD OPERATIONS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<style type="text/css">
-    tr:nth-of-type(odd) {
-        background-color: #e5d7d7;
-    }
-
-    body {
-        background: white;
-    }
-
-    .btn {
-        color: white;
-        background: black;
-        size: 3px;
-    }
-
-    .btn:hover {
-
-        background-color: #5b8480;
-    }
-</style>
-
 <body>
     <div class="col-md-4">
         <div class="form-group">
@@ -87,9 +67,7 @@
                                                 <th class="text-center" style=" background-color:#5b8480">Name</th>
                                                 <th class="text-center" style=" background-color:#5b8480">Mobile</th>
                                                 <th class="text-center" style=" background-color:#5b8480">Delete</th>
-
                                             </tr>
-
                                         </thead>
                                         <tbody class="userList">
                                         </tbody>
@@ -102,8 +80,7 @@
                             <script type="text/javascript" src="assets/js/jquery.min.js"></script>
                             <script>
                                 $(document).ready(function() {
-                                    $('#add').click(function(e) {
-                                        e.preventDefault();
+                                    $('#add').click(function() {
                                         var name = $('#name').val();
                                         var mobile = $('#mobile').val();
                                         if ((mobile.length != 10) && (typeof(mobile) != "number")) {
@@ -122,22 +99,13 @@
                                                 "mobile": mobile
                                             }
                                         });
-                                        request.success(function(data) {
-                                            if (data.status == 1) {
-                                                var userData = data.response;
-                                                localStorage.setItem('user', JSON.stringify(userData));
-                                                window.location.replace('index.html');
-                                            }
-                                        });
-                                        
                                         $('#viewUser').trigger('click');
                                     });
 
                                 });
 
                                 $(document).ready(function() {
-                                    $('#update').click(function(e) {
-                                        e.preventDefault();
+                                    $('#update').click(function() {
                                         var name = $('#name').val();
                                         var mobile = $('#mobile').val();
                                         var id = $('#id').val();
@@ -163,23 +131,14 @@
                                                 "id": id
                                             }
                                         });
-                                        request.success(function(data) {
-                                            if (data.status == 1) {
-                                                var userData = data.response;
-                                                localStorage.setItem('user', JSON.stringify(userData));
-                                                window.location.replace('index.html');
-                                            } 
-                                        });
                                         
                                         $('#viewUser').trigger('click');
                                     });
 
                                 });
 
-
-                                $(document).ready(function() {
-                                    $('#delete').click(function(e) {
-                                        e.preventDefault();
+                                    $(document).ready(function() {
+                                    $('#delete').click(function() {
                                         var name = $('#name').val();
                                         var mobile = $('#mobile').val();
                                         var id = $('#id').val();
@@ -195,34 +154,19 @@
                                                 "mobile": mobile
                                             }
                                         });
-                                        request.success(function(data) {
-                                            if (data.status == 1) {
-                                                var userData = data.response;
-                                                localStorage.setItem('user', JSON.stringify(userData));
-                                            } 
-                                        });
                                         $('#viewUser').trigger('click');
                                     });
                                     
                                 });
 
-
-
-
-                                $('#viewUser').click(function(e) {
-                                    e.preventDefault();
+                                   $('#viewUser').click(function() {
                                     var request = $.ajax({
                                         "url": "http://localhost:3000/viewUser",
-                                        "type": "post",
-                                        "data": {
-
-                                        }
+                                        "type": "get"
                                     });
                                     request.success(function(data) {
                                         $('.userList').empty();
                                         for (var i = 0; i < data.length; i++) {
-                                            var userData = data.response;
-                                            localStorage.setItem('user', JSON.stringify(userData));
                                             $('.userList').append('<tr>\
                     <td class="text-center">' + data[i]["id"] + '</td>\
                     <td class="text-center">' + data[i]["name"] + '</td>\
@@ -231,12 +175,11 @@
                 </tr>')
                                         }
 
-
                                     })
                                 });
 
                                 function deleteUser(id) {
-                                    alert("id "+id+" will be deleted permanently");
+                                    alert("delete");
                                     var request = $.ajax({
                                         "url": "http://localhost:3000/delete",
                                         "type": "POST",
@@ -246,9 +189,7 @@
                                     });
                                     $('#viewUser').trigger('click');
                                 }
-                                $(window).scroll();
-
-                                $(window).resize();
+                               
                             </script>
 </body>
 
