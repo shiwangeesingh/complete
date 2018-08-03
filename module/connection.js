@@ -12,8 +12,8 @@ connection.connect(function(err){
 			status: 0,
 			message : "error in execution"
 		}
-		 res.send(error)
-	}else{
+	}
+	else{
 		console.log("database is working");
 	}
 });

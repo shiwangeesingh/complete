@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<link href="style.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
     <title> CRUD OPERATIONS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -164,8 +164,10 @@
                                         "url": "http://localhost:3000/user/viewUser",
                                         "type": "get"
                                     });
+
                                     request.success(function(data) {
                                         $('.userList').empty();
+
                                         for (var i = 0; i < data.length; i++) {
                                             $('.userList').append('<tr>\
                     <td class="text-center">' + data[i]["id"] + '</td>\
@@ -174,7 +176,6 @@
                     <td class="text-center" ><button class="btn" id="delete' + i + '" onclick="deleteUser(' + data[i]["id"] + ')">Delete</button></td>\
                 </tr>')
                                         }
-
                                     })
                                 });
 
