@@ -1,64 +1,85 @@
 var userModel = require('../model/user');
+var connection = require('../module/connection.js');
 var commFunc = require('../module/commonFunction');
+var responses = require('../module/responses');
 exports.add = function(req, res) {
     var {mobile,name} = req.body;
+    var manvalue = [name,mobile];
+    var checkBlank = commFunc.checkBlank(manvalue);
+    var validation = commFunc.validation(mobile);
+    if(checkBlank == 1)
+    {
+        responses.parameterMissing(res)
+    }
+    else if(validation == false){
+           responses.invalidData(res, "Invalid mobile");
+    }
+    else
+    {
       userModel.checkAvailable({mobile}, function(err, result) {
         if (err) {
-            res.status(500).json({response:"error",message:err})
-        } else {
+            responses.sendError(res)
+        }
+         else {
             if (result.length > 0) {
-            res.status(201).json({response:err,message:"Number already exist"})    
+            responses.numberAlreadyExist(res, "Mobile number registered")  
             } else {
-            var data = {
-                mobile,
-                name
-            };
+            var data = {mobile,name};
             userModel.addQuery(data, function(err,insert) {
                 if (err) {
-                    res.status(500).json({response:err,message:err})
+            responses.sendError(res)
+                    
                 } else {
-                    res.status(201).json({response:"result",message:"data inserted successfully"})
+                    responses.success(res, insert)
                 }
-
             })
         }
     }
-    })
+})
+  }
 }
 
 exports.update = function(req, res) {
     var { id, mobile,  name} = req.body;
+    var manvalue = [name,mobile];
+    var validation = commFunc.validation(mobile);
+    var checkBlank = commFunc.checkBlank(manvalue);
     userModel.checkAvailable({id}, function(err,checkAvaliblity) {
         if (err){
-             res.status(500).json({response:err,message:err})
-                } else {
-                    if (checkAvaliblity.length == 0) {
-                        res.status(201).json({response:err,message:"Id doesnot exist"}) 
+             responses.sendError(res)
+                } else if(checkAvaliblity.length == 0) {
+                        responses.idNotFound(res) 
                     }  
-            else{ 
-                userModel.checkAvailable({mobile}, function(err,checkAvaliblity) {
-
-                    if (err)
-                        res.status(500).json({response:err,message:err})
-                else {
-                    if (checkAvaliblity.length > 0) {
-                        res.status(201).json({response:err,message:"number already exist"}) 
-                        } 
-                    else
-                        {
-                            userModel.updateQuery({name,mobile}, {id}, function(err,updateUser) {
-                                if (err) {
-                                    res.status(500).json({response:err,message:err})
+                    else if(checkBlank == 1)
+                    {
+                        responses.parameterMissing(res)
+                    }
+                    else if(validation == false){
+                        responses.invalidData(res)
+                    } 
+                    else{
+                        userModel.checkAvailable({mobile}, function(err,checkAvaliblity) {
+                            if (err)
+                                responses.sendError(res)
+                            else {
+                                if (checkAvaliblity.length > 0) {
+                                    responses.numberAlreadyExist(res) 
+                                } 
+                                else
+                                {
+                                    userModel.updateQuery({name,mobile}, {id}, function(err,updateUser) {
+                                        if (err) {
+                                            responses.sendError()
                                     }
-                                else{
-                                    res.status(201).json({response:updateUser,message:"data updated successfully"})
+                                    else{
+                                        responses.success(res, updateUser)
                                     } 
                                 }) 
                         }
                     }
                 })
             }
-        }
+        
     })
 }
 
@@ -66,35 +87,32 @@ exports.delete = function(req, res) {
     var {id} = req.body;
     userModel.checkAvailable({id}, function(err, checkAvaliblity) {
         if (err) {
-            console.log("err calling")
-            res.status(500).json({response:"error",message:err})
+            responses.sendError()
         } 
         else {
             if (checkAvaliblity.length == 0) {
-                console.log("result part calling")
-                res.status(201).json({response:err,message:"Id doesnot exist"})    
+                responses.idNotFound(res)    
             }
                  else {
                     userModel.deleteQuery({id}, function(err,result) {
                         if (err) {
-                            res.status(500).json({response:err,message:err})
+                            responses.sendError()
                         } 
                         else {
-                            res.status(201).json({response:result,message:"data deleted successfully"})
+                            responses.success(res, result)
                         }
                     })
                 }
             }
         })
 }
-
 exports.viewUser = function(req, res) {
     userModel.view(function(err,result) {
         if (err) {
-            res.status(500).json({response:err,messgae:err})
+            responses.sendError()
         } 
         else {
-            res.status(201).json({response:result,message:"data inserted successfully"})
+             responses.success(res, result)
         }
     })
 }

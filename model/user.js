@@ -47,6 +47,11 @@ exports.deleteQuery = (data, callback) => {
 exports.view = (callback) => {
     var sql = "SELECT * from taskperform";
     connection.query(sql, (err, result) => {
-        callback(err,result)
+        if(err) {
+            callback(err)
+        } else {
+            callback(null,result)
+        }
+        
     })
 }

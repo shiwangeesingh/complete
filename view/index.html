@@ -83,14 +83,15 @@
                                     $('#add').click(function() {
                                         var name = $('#name').val();
                                         var mobile = $('#mobile').val();
-                                        if ((mobile.length != 10) && (typeof(mobile) != "number")) {
-                                            alert("Mobile Number is incorrect");
-                                            return false;
-                                        }
                                         if (name.length == 0) {
                                             alert("Name Field is required");
                                             return false;
                                         }
+                                        else if ((mobile.length != 10) && (typeof(mobile) != "number")) {
+                                            alert("Mobile Number is incorrect");
+                                            return false;
+                                        }
+                                        
                                         var request = $.ajax({
                                             "url": "http://localhost:3000/user/add",
                                             "type": "POST",
@@ -113,12 +114,12 @@
                                             alert("ID is required");
                                         }
 
-                                        if (name.length == 0) {
+                                       else if (name.length == 0) {
                                             alert("Name is required");
                                             return false;
                                         }
 
-                                        if ((mobile.length != 10) && (typeof(mobile) != "Number")) {
+                                        else if ((mobile.length != 10) && (typeof(mobile) != "Number")) {
                                             alert("Mobile Number is incorrect");
                                             return false;
                                         }
@@ -167,18 +168,19 @@
 
                                     request.success(function(data) {
                                         $('.userList').empty();
-
-                                        for (var i = 0; i < data.length; i++) {
+                                        let data1 = data.response
+                                            console.log(data1) ;
+                                        for (var i = 0; i < data1.length; i++) {
                                             $('.userList').append('<tr>\
-                    <td class="text-center">' + data[i]["id"] + '</td>\
-                    <td class="text-center">' + data[i]["name"] + '</td>\
-                    <td class="text-center">' + data[i]["mobile"] + '</td>\
-                    <td class="text-center" ><button class="btn" id="delete' + i + '" onclick="deleteUser(' + data[i]["id"] + ')">Delete</button></td>\
+                    <td class="text-center">' + data1[i]["id"] + '</td>\
+                    <td class="text-center">' + data1[i]["name"] + '</td>\
+                    <td class="text-center">' + data1[i]["mobile"] + '</td>\
+                    <td class="text-center" ><button class="btn" id="delete' + i + '" onclick="deleteUser(' + data1[i]["id"] + ')">Delete</button></td>\
                 </tr>')
-                                        }
+                                     }
                                     })
                                 });
-
+ 
                                 function deleteUser(id) {
                                     alert("delete");
                                     var request = $.ajax({
