@@ -12,7 +12,7 @@ exports.add = function(req, res) {
         responses.parameterMissing(res)
     }
     else if(validation == false){
-           responses.invalidData(res, "Invalid mobile");
+           responses.invalidData(res)
     }
     else
     {
@@ -22,7 +22,7 @@ exports.add = function(req, res) {
         }
          else {
             if (result.length > 0) {
-            responses.numberAlreadyExist(res, "Mobile number registered")  
+            responses.numberAlreadyExist(res)  
             } else {
             var data = {mobile,name};
             userModel.addQuery(data, function(err,insert) {

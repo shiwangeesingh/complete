@@ -41,13 +41,6 @@ exports.nodata = function(res) {
 	res.status(constants.responseFlags.NO_DATA_FOUND).json(response);
 
 }
-// exports.success=function(result,res){
-// 	var response={
-// 		status:1,
-// 		message:result[0]
-// 	}
-// 	res.send(response);
-// }
 exports.idNotFound = function(res) {
 	var response = {
 		response: {},
@@ -55,32 +48,10 @@ exports.idNotFound = function(res) {
 	};
 	res.status(constants.responseFlags.ID_NOT_FOUND).json(response);
 }
-
 exports.invalidData = function(res) {
 	var response = {
 		response: {},
 		message : constants.responseMessages.INVALID_MOBILE_NUMBER
 	};
 	res.status(constants.responseFlags.INVALID_MOBILE_NUMBER).json(response);
-}
-exports.mobileRequire = function(res) {
-	var response = {
-		response: {},
-		message: constants.responseMessages.MOBILE_NUMBER_REQUIRE
-	};
-	res.status(constants.responseFlags.MOBILE_NUMBER_REQUIRE).json(response);
-}
-exports.nameRequire = function(res) {
-	var response = {
-		response: {},
-		message: constants.responseMessages.NAME_REQUIRE
-	};
-	res.status(constants.responseFlags.NAME_REQUIRE).json(response);
-}
-exports.idRequire = function(res) {
-	var response = {
-		response: {},
-		message: constants.responseMessages.ID_REQUIRE
-	};
-	res.status(constants.responseFlags.ID_REQUIRE).json(response);
 }

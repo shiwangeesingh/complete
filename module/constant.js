@@ -1,7 +1,3 @@
-/**
- * The node-module to hold the constants for the server
- */
-
 function define(obj, name, value) {
     Object.defineProperty(obj, name, {
         value: value,
