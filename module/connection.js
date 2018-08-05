@@ -1,5 +1,6 @@
 var configs = require('./config');
 var mysql = require('mysql');
+var responses = require('./responses');
 var connection = mysql.createConnection({
   host     : configs.hostName,
   user     : configs.user,
@@ -10,8 +11,9 @@ connection.connect(function(err){
 	if(err){
 		var error={
 			status: 0,
-			message : "error in execution"
+			message: "Error in execution"
 		}
+		responses.sendError(error)
 	}
 	else{
 		console.log("database is working");

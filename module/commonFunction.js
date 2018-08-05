@@ -14,11 +14,8 @@ exports.checkBlank = function(arr) {
 	return 0;
 }
 exports.validation =  function(number) {
-	console.log(number);
-	console.log(number.length);
-	console.log("validation calling")
 	var phoneNo = number;
-	if (phoneNo.length !=10) {
+	if (phoneNo.toString().length !=10) {
 		return false;
 	}
 	return true;
