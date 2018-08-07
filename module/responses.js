@@ -1,13 +1,15 @@
 
 var constants = require('./constant');
 
-exports.parameterMissing = function(res) {
-	var response = {
-		response: {},
+exports.parameterMissing = (res, result) => {
+	let response = {
+		response : {},
 		message: constants.responseMessages.PARAMETER_MISSING
+		//"message" : result,
+		
 	};
 	res.status(constants.responseFlags.PARAMETER_MISSING).json(response);
-}
+};
 
 exports.sendError = function(res) {
 	var response = {

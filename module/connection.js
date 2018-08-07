@@ -7,13 +7,13 @@ var connection = mysql.createConnection({
   password : configs.password,
   database : configs.dbName
 });
-connection.connect(function(err){
+connection.connect(function(err,res){
 	if(err){
-		var error={
-			status: 0,
-			message: "Error in execution"
-		}
-		responses.sendError(error)
+		// var error={
+		// 	status: 0,
+		// 	message: "Error in execution"
+		// }
+		responses.sendError(res)
 	}
 	else{
 		console.log("database is working");
