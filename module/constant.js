@@ -14,6 +14,7 @@ exports.responseMessages = {};
 define(exports.responseMessages, 'PARAMETER_MISSING',                     'Some parameter missing.');
 define(exports.responseMessages, 'INVALID_ACCESS_TOKEN',                  'Invalid access token.');
 define(exports.responseMessages, 'INVALID_MOBILE_NUMBER',                 'Invalid mobile number.');
+define(exports.responseMessages, 'INVALID_DATA',                          'Invalid data.');
 define(exports.responseMessages, 'INVALID_EMAIL_ID',                      'Invalid email id.');
 define(exports.responseMessages, 'INVALID_CREDENTIAL',                    'Invalid credential.');
 define(exports.responseMessages, 'INCORRECT_PASSWORD',                    'Incorrect Password.');
@@ -42,7 +43,7 @@ define(exports.responseMessages, 'ID_REQUIRE',                          'Id is r
 define(exports.responseFlags, 'ALREADY_EXIST',                       422);
 define(exports.responseFlags, 'PARAMETER_MISSING',                   422);
 define(exports.responseFlags, 'INVALID_ACCESS_TOKEN',                401);
-define(exports.responseFlags, 'INVALID_MOBILE_NUMBER',               403);
+define(exports.responseFlags, 'INVALID_DATA',               403);
 define(exports.responseFlags, 'INVALID_CREDENTIAL',                  403);
 define(exports.responseFlags, 'INVALID_EMAIL_ID',                    403);
 define(exports.responseFlags, 'WRONG_PASSWORD',                      403);

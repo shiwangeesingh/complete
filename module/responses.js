@@ -3,10 +3,8 @@ var constants = require('./constant');
 
 exports.parameterMissing = (res, result) => {
 	let response = {
-		response : {},
+		response : result,
 		message: constants.responseMessages.PARAMETER_MISSING
-		//"message" : result,
-		
 	};
 	res.status(constants.responseFlags.PARAMETER_MISSING).json(response);
 };
@@ -53,7 +51,7 @@ exports.idNotFound = function(res) {
 exports.invalidData = function(res) {
 	var response = {
 		response: {},
-		message : constants.responseMessages.INVALID_MOBILE_NUMBER
+		message : constants.responseMessages.INVALID_DATA
 	};
-	res.status(constants.responseFlags.INVALID_MOBILE_NUMBER).json(response);
+	res.status(constants.responseFlags.INVALID_DATA).json(response);
 }
